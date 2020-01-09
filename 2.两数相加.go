@@ -1,10 +1,10 @@
 package main
 
-import "fmt"
-
-import "encoding/json"
-
-import "bytes"
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+)
 
 type ListNode struct {
 	Val  int
@@ -18,7 +18,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var l1Value int
 	var l2Value int
 
-	var next1  *ListNode
+	var next1 *ListNode
 	var next2 *ListNode
 
 	next1 = nil
