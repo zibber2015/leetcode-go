@@ -8,7 +8,7 @@ func lengthOfLongestSubstring(s string) int {
 
 	result := 0
 	for i < len(s) {
-		tmp := make(map[byte]int)
+		tmp := make(map[byte]int, 0)
 		for j = i; j < len(s); {
 
 			needBreak := false
@@ -44,7 +44,7 @@ func lengthOfLongestSubstring(s string) int {
 }
 
 func main() {
-	s := " "
+	s := "asdaasasadadadsasddgtr"
 
 	result := lengthOfLongestSubstring(s)
 	fmt.Println(result)
