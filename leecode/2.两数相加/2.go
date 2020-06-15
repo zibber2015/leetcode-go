@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 import (
 	"bytes"
@@ -11,7 +11,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-//连表
+//链表
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	node := &ListNode{}
 
@@ -91,12 +91,12 @@ func main() {
 func (v *ListNode) toString() {
 	b, err := json.Marshal(v)
 	if err != nil {
-		fmt.Println("%+v", v)
+		fmt.Printf("%+v", v)
 	}
 	var out bytes.Buffer
 	err = json.Indent(&out, b, "", " ")
 	if err != nil {
-		fmt.Println("%+v", v)
+		fmt.Printf("%+v", v)
 	}
 	fmt.Println(out.String())
 }
