@@ -1,39 +1,53 @@
 package leetcode
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
+//去重不是最优解
 func permuteUnique(nums []int) [][]int {
 	var list []int
+	var res [][]int
 	use := make([]bool, len(nums))
-	result := backTrack(nums, len(nums),0, list , use)
+	distinct := make(map[string]bool)
+	backtrack(nums, len(nums), 0, list, use, distinct, &res)
 
-	return result
+	return res
 }
 
-func backTrack(nums []int, length int, depth int, list []int, use []bool) [][]int {
-	var res [][]int
-
+func backtrack(nums []int, length int, depth int, list []int, use []bool, distinct map[string]bool, res *[][]int) {
 	//到底部返回当前路线
 	if depth == length {
-		res = append(res, list)
-		return res
+		s := join(list)
+		if check, ok := distinct[s]; ok && check {
+			return
+		}
+		*res = append(*res, list)
+		distinct[s] = true
+		fmt.Println(distinct)
+		return
 	}
 
 	for i := 0; i < length; i++ {
 		if use[i] {
 			continue
 		}
-
 		list = append(list, nums[i])
+		newList := make([]int, len(list))
+		copy(newList, list)
 		use[i] = true
-		result := backTrack(nums, length, depth + 1, list, use)
-		fmt.Println(list)
-		fmt.Println(use)
-		res = append(res, result...)
+		backtrack(nums, length, depth+1, newList, use, distinct, res)
 		//向上回溯
-		list = list[:len(list)-1]
+		list = list[:(len(list) - 1)]
 		use[i] = false
 	}
+}
 
-	return res
+func join(arr []int) string {
+	s := ""
+	for _,i:=range arr {
+		s = s + strconv.Itoa(i)
+	}
+	return s
 }

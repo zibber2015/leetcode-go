@@ -5,7 +5,7 @@ import (
 )
 
 func TestA(t *testing.T) {
-	a := []int{1,2,3,4}
+	a := []int{1,1,2}
 	b := permuteUnique(a)
 	t.Log(b)
 }
