@@ -34,7 +34,7 @@ func lengthOfLongestSubstring(s string) int {
 				result = len(tmp)
 			}
 
-			if (needBreak) {
+			if needBreak {
 				break
 			}
 		}

@@ -1,4 +1,4 @@
-package main
+package rabbitmq
 
 import "fmt"
 
@@ -15,10 +15,4 @@ func Run() {
 			<- ch
 		}()
 	}
-}
-
-func main() {
-	go Run()
-
-
 }
